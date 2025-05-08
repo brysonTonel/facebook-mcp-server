@@ -1,6 +1,6 @@
 # Facebook MCP Server
 
-This project is a **Modular Command Processor (MCP)** agent for automating and managing interactions on a Facebook Page using the Facebook Graph API. It exposes tools to create posts, moderate comments, fetch post insights, and filter negative feedback — ready to plug into Claude, ChatGPT, or other LLM-based agents.
+This project is a **MCP server** for automating and managing interactions on a Facebook Page using the Facebook Graph API. It exposes tools to create posts, moderate comments, fetch post insights, and filter negative feedback — ready to plug into Claude, ChatGPT, or other LLM-based agents.
 
 ---
 
@@ -11,7 +11,7 @@ This MCP provides a suite of AI-callable tools that connect directly to a Facebo
 ### ✅ Benefits
 
 - Empowers **social media managers** to automate moderation and analytics.
-- Seamlessly integrates with **Claude Desktop or OpenAI Agents**.
+- Seamlessly integrates with **Claude Desktop or any Agent client**.
 - Enables fine-grained control over Facebook content from natural language.
 
 ---
