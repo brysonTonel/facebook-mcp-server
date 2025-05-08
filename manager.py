@@ -1,0 +1,47 @@
+from typing import Any
+from facebook_api import FacebookAPI
+
+
+class Manager:
+    def __init__(self):
+        self.api = FacebookAPI()
+
+    def post_to_facebook(self, message: str) -> dict[str, Any]:
+        return self.api.post_message(message)
+
+    def reply_to_comment(self, post_id: str, comment_id: str, message: str) -> dict[str, Any]:
+        return self.api.reply_to_comment(comment_id, message)
+
+    def get_page_posts(self) -> dict[str, Any]:
+        return self.api.get_posts()
+
+    def get_post_comments(self, post_id: str) -> dict[str, Any]:
+        return self.api.get_comments(post_id)
+
+    def delete_post(self, post_id: str) -> dict[str, Any]:
+        return self.api.delete_post(post_id)
+
+    def delete_comment(self, comment_id: str) -> dict[str, Any]:
+        return self.api.delete_comment(comment_id)
+
+    def delete_comment_from_post(self, post_id: str, comment_id: str) -> dict[str, Any]:
+        return self.api.delete_comment(comment_id)
+
+    def filter_negative_comments(self, comments: dict[str, Any]) -> list[dict[str, Any]]:
+        keywords = ["bad", "terrible", "awful", "hate", "dislike", "problem", "issue"]
+        return [c for c in comments.get("data", []) if any(k in c.get("message", "").lower() for k in keywords)]
+
+    def get_number_of_comments(self, post_id: str) -> int:
+        return len(self.api.get_comments(post_id).get("data", []))
+
+    def get_number_of_likes(self, post_id: str) -> int:
+        return self.api._request("GET", post_id, {"fields": "likes.summary(true)"}).get("likes", {}).get("summary", {}).get("total_count", 0)
+
+    def get_post_insights(self, post_id: str) -> dict[str, Any]:
+        metrics = [
+            "post_impressions", "post_impressions_unique", "post_impressions_paid",
+            "post_impressions_organic", "post_engaged_users", "post_clicks",
+            "post_reactions_like_total", "post_reactions_love_total", "post_reactions_wow_total",
+            "post_reactions_haha_total", "post_reactions_sorry_total", "post_reactions_anger_total",
+        ]
+        return self.api.get_bulk_insights(post_id, metrics)
