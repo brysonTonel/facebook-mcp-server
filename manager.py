@@ -45,3 +45,39 @@ class Manager:
             "post_reactions_haha_total", "post_reactions_sorry_total", "post_reactions_anger_total",
         ]
         return self.api.get_bulk_insights(post_id, metrics)
+    
+    def get_post_impressions(self, post_id: str) -> dict[str, Any]:
+    return self.api.get_insight(post_id, "post_impressions")
+
+    def get_post_impressions_unique(self, post_id: str) -> dict[str, Any]:
+        return self.api.get_insight(post_id, "post_impressions_unique")
+
+    def get_post_impressions_paid(self, post_id: str) -> dict[str, Any]:
+        return self.api.get_insight(post_id, "post_impressions_paid")
+
+    def get_post_impressions_organic(self, post_id: str) -> dict[str, Any]:
+        return self.api.get_insight(post_id, "post_impressions_organic")
+
+    def get_post_engaged_users(self, post_id: str) -> dict[str, Any]:
+        return self.api.get_insight(post_id, "post_engaged_users")
+
+    def get_post_clicks(self, post_id: str) -> dict[str, Any]:
+        return self.api.get_insight(post_id, "post_clicks")
+
+    def get_post_reactions_like_total(self, post_id: str) -> dict[str, Any]:
+        return self.api.get_insight(post_id, "post_reactions_like_total")
+
+    def get_post_reactions_love_total(self, post_id: str) -> dict[str, Any]:
+        return self.api.get_insight(post_id, "post_reactions_love_total")
+
+    def get_post_reactions_wow_total(self, post_id: str) -> dict[str, Any]:
+        return self.api.get_insight(post_id, "post_reactions_wow_total")
+
+    def get_post_reactions_haha_total(self, post_id: str) -> dict[str, Any]:
+        return self.api.get_insight(post_id, "post_reactions_haha_total")
+
+    def get_post_reactions_sorry_total(self, post_id: str) -> dict[str, Any]:
+        return self.api.get_insight(post_id, "post_reactions_sorry_total")
+
+    def get_post_reactions_anger_total(self, post_id: str) -> dict[str, Any]:
+        return self.api.get_insight(post_id, "post_reactions_anger_total")

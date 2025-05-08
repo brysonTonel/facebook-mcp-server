@@ -2,7 +2,7 @@ from mcp.server.fastmcp import FastMCP
 from manager import Manager
 from typing import Any
 
-mcp = FastMCP("Demo")
+mcp = FastMCP("FacebookMCP")
 manager = Manager()
 
 @mcp.tool()
@@ -92,3 +92,99 @@ def get_post_insights(post_id: str) -> dict[str, Any]:
     Output: dict with multiple metrics and their values
     """
     return manager.get_post_insights(post_id)
+
+@mcp.tool()
+def get_post_impressions(post_id: str) -> dict[str, Any]:
+    """Fetch total impressions of a post.
+    Input: post_id (str)
+    Output: dict with total impression count
+    """
+    return manager.get_post_impressions(post_id)
+
+@mcp.tool()
+def get_post_impressions_unique(post_id: str) -> dict[str, Any]:
+    """Fetch unique impressions of a post.
+    Input: post_id (str)
+    Output: dict with unique impression count
+    """
+    return manager.get_post_impressions_unique(post_id)
+
+@mcp.tool()
+def get_post_impressions_paid(post_id: str) -> dict[str, Any]:
+    """Fetch paid impressions of a post.
+    Input: post_id (str)
+    Output: dict with paid impression count
+    """
+    return manager.get_post_impressions_paid(post_id)
+
+@mcp.tool()
+def get_post_impressions_organic(post_id: str) -> dict[str, Any]:
+    """Fetch organic impressions of a post.
+    Input: post_id (str)
+    Output: dict with organic impression count
+    """
+    return manager.get_post_impressions_organic(post_id)
+
+@mcp.tool()
+def get_post_engaged_users(post_id: str) -> dict[str, Any]:
+    """Fetch number of engaged users.
+    Input: post_id (str)
+    Output: dict with engagement count
+    """
+    return manager.get_post_engaged_users(post_id)
+
+@mcp.tool()
+def get_post_clicks(post_id: str) -> dict[str, Any]:
+    """Fetch number of post clicks.
+    Input: post_id (str)
+    Output: dict with click count
+    """
+    return manager.get_post_clicks(post_id)
+
+@mcp.tool()
+def get_post_reactions_like_total(post_id: str) -> dict[str, Any]:
+    """Fetch number of 'Like' reactions.
+    Input: post_id (str)
+    Output: dict with like count
+    """
+    return manager.get_post_reactions_like_total(post_id)
+
+@mcp.tool()
+def get_post_reactions_love_total(post_id: str) -> dict[str, Any]:
+    """Fetch number of 'Love' reactions.
+    Input: post_id (str)
+    Output: dict with love count
+    """
+    return manager.get_post_reactions_love_total(post_id)
+
+@mcp.tool()
+def get_post_reactions_wow_total(post_id: str) -> dict[str, Any]:
+    """Fetch number of 'Wow' reactions.
+    Input: post_id (str)
+    Output: dict with wow count
+    """
+    return manager.get_post_reactions_wow_total(post_id)
+
+@mcp.tool()
+def get_post_reactions_haha_total(post_id: str) -> dict[str, Any]:
+    """Fetch number of 'Haha' reactions.
+    Input: post_id (str)
+    Output: dict with haha count
+    """
+    return manager.get_post_reactions_haha_total(post_id)
+
+@mcp.tool()
+def get_post_reactions_sorry_total(post_id: str) -> dict[str, Any]:
+    """Fetch number of 'Sorry' reactions.
+    Input: post_id (str)
+    Output: dict with sorry count
+    """
+    return manager.get_post_reactions_sorry_total(post_id)
+
+@mcp.tool()
+def get_post_reactions_anger_total(post_id: str) -> dict[str, Any]:
+    """Fetch number of 'Anger' reactions.
+    Input: post_id (str)
+    Output: dict with anger count
+    """
+    return manager.get_post_reactions_anger_total(post_id)
