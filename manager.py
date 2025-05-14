@@ -5,6 +5,8 @@ from facebook_api import FacebookAPI
 class Manager:
     def __init__(self):
         self.api = FacebookAPI()
+        self.handled_comments = set()
+        self.reports = []
 
     def post_to_facebook(self, message: str) -> dict[str, Any]:
         return self.api.post_message(message)
@@ -81,3 +83,21 @@ class Manager:
 
     def get_post_reactions_anger_total(self, post_id: str) -> dict[str, Any]:
         return self.api.get_insights(post_id, "post_reactions_anger_total")
+
+    def get_post_top_commenters(self, post_id: str) -> list[dict[str, Any]]:
+        comments = self.get_post_comments(post_id).get("data", [])
+        counter = {}
+        for comment in comments:
+            user_id = comment.get("from", {}).get("id")
+            if user_id:
+                counter[user_id] = counter.get(user_id, 0) + 1
+        return sorted([{"user_id": k, "count": v} for k, v in counter.items()], key=lambda x: x["count"], reverse=True)
+
+    def post_image_to_facebook(self, image_url: str, caption: str) -> dict[str, Any]:
+        return self.api.post_image_to_facebook(image_url, caption)
+
+    def send_dm_to_user(self, user_id: str, message: str) -> dict[str, Any]:
+        return self.api.send_dm_to_user(user_id, message)
+    
+    def update_post(self, post_id: str, new_message: str) -> dict[str, Any]:
+        return self.api.update_post(post_id, new_message)
