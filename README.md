@@ -2,6 +2,10 @@
 
 This project is a **MCP server** for automating and managing interactions on a Facebook Page using the Facebook Graph API. It exposes tools to create posts, moderate comments, fetch post insights, and filter negative feedback — ready to plug into Claude, or other LLM-based agents.
 
+<a href="https://glama.ai/mcp/servers/@HagaiHen/facebook-mcp-server">
+  <img width="380" height="200" src="https://glama.ai/mcp/servers/@HagaiHen/facebook-mcp-server/badge" />
+</a>
+
 ---
 
 ## 🤖 What Is This?
