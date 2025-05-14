@@ -41,6 +41,10 @@ This MCP provides a suite of AI-callable tools that connect directly to a Facebo
 | `get_post_engaged_users`         | Get number of users who engaged with the post.                      |
 | `get_post_clicks`                | Get number of clicks on the post.                                   |
 | `get_post_reactions_like_total`  | Get total number of 'Like' reactions.                               |
+| `get_post_top_commenters`        | Get the top commenters on a post.                                   |
+| `post_image_to_facebook`         | Post an image with a caption to the Facebook page.                  |
+| `send_dm_to_user`                | Send a direct message to a user.                                    |
+| `update_post`                    | Updates an existing post's message.                                 |
 
 ---
 
