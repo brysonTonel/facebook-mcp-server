@@ -5,10 +5,10 @@ from config import GRAPH_API_BASE_URL, PAGE_ID, PAGE_ACCESS_TOKEN
 
 class FacebookAPI:
     # Generic Graph API request method
-    def _request(self, method: str, endpoint: str, params: dict[str, Any]) -> dict[str, Any]:
+    def _request(self, method: str, endpoint: str, params: dict[str, Any], json: dict[str, Any] = None) -> dict[str, Any]:
         url = f"{GRAPH_API_BASE_URL}/{endpoint}"
         params["access_token"] = PAGE_ACCESS_TOKEN
-        response = requests.request(method, url, params=params)
+        response = requests.request(method, url, params=params, json=json)
         return response.json()
 
     def post_message(self, message: str) -> dict[str, Any]:
@@ -35,3 +35,21 @@ class FacebookAPI:
     def get_bulk_insights(self, post_id: str, metrics: list[str], period: str = "lifetime") -> dict[str, Any]:
         metric_str = ",".join(metrics)
         return self.get_insights(post_id, metric_str, period)
+
+    def post_image_to_facebook(self, image_url: str, caption: str) -> dict[str, Any]:
+        params = {
+            "url": image_url,
+            "caption": caption
+        }
+        return self._request("POST", f"{PAGE_ID}/photos", params)
+    
+    def send_dm_to_user(self, user_id: str, message: str) -> dict[str, Any]:
+        payload = {
+            "recipient": {"id": user_id},
+            "message": {"text": message},
+            "messaging_type": "RESPONSE"
+        }
+        return self._request("POST", "me/messages", {}, json=payload)
+    
+    def update_post(self, post_id: str, new_message: str) -> dict[str, Any]:
+        return self._request("POST", f"{post_id}", {"message": new_message})

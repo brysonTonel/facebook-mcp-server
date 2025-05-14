@@ -188,3 +188,35 @@ def get_post_reactions_anger_total(post_id: str) -> dict[str, Any]:
     Output: dict with anger count
     """
     return manager.get_post_reactions_anger_total(post_id)
+
+@mcp.tool()
+def get_post_top_commenters(post_id: str) -> list[dict[str, Any]]:
+    """Get the top commenters on a post.
+    Input: post_id (str)
+    Output: list of user IDs with comment counts
+    """
+    return manager.get_post_top_commenters(post_id)
+
+@mcp.tool()
+def post_image_to_facebook(image_url: str, caption: str) -> dict[str, Any]:
+    """Post an image with a caption to the Facebook page.
+    Input: image_url (str), caption (str)
+    Output: dict of post result
+    """
+    return manager.post_image_to_facebook(image_url, caption)
+
+@mcp.tool()
+def send_dm_to_user(user_id: str, message: str) -> dict[str, Any]:
+    """Send a direct message to a user.
+    Input: user_id (str), message (str)
+    Output: dict of result from Messenger API
+    """
+    return manager.send_dm_to_user(user_id, message)
+
+@mcp.tool()
+def update_post(post_id: str, new_message: str) -> dict[str, Any]:
+    """Updates an existing post's message.
+    Input: post_id (str), new_message (str)
+    Output: dict of update result
+    """
+    return manager.update_post(post_id, new_message)
