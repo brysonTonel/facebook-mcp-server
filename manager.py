@@ -5,8 +5,6 @@ from facebook_api import FacebookAPI
 class Manager:
     def __init__(self):
         self.api = FacebookAPI()
-        self.handled_comments = set()
-        self.reports = []
 
     def post_to_facebook(self, message: str) -> dict[str, Any]:
         return self.api.post_message(message)
