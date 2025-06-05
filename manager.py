@@ -99,3 +99,12 @@ class Manager:
     
     def update_post(self, post_id: str, new_message: str) -> dict[str, Any]:
         return self.api.update_post(post_id, new_message)
+
+    def schedule_post(self, message: str, publish_time: int) -> dict[str, Any]:
+        return self.api.schedule_post(message, publish_time)
+
+    def get_page_fan_count(self) -> int:
+        return self.api.get_page_fan_count()
+
+    def get_post_share_count(self, post_id: str) -> int:
+        return self.api.get_post_share_count(post_id)

@@ -53,3 +53,19 @@ class FacebookAPI:
     
     def update_post(self, post_id: str, new_message: str) -> dict[str, Any]:
         return self._request("POST", f"{post_id}", {"message": new_message})
+
+    def schedule_post(self, message: str, publish_time: int) -> dict[str, Any]:
+        params = {
+            "message": message,
+            "published": False,
+            "scheduled_publish_time": publish_time,
+        }
+        return self._request("POST", f"{PAGE_ID}/feed", params)
+
+    def get_page_fan_count(self) -> int:
+        data = self._request("GET", f"{PAGE_ID}", {"fields": "fan_count"})
+        return data.get("fan_count", 0)
+
+    def get_post_share_count(self, post_id: str) -> int:
+        data = self._request("GET", f"{post_id}", {"fields": "shares"})
+        return data.get("shares", {}).get("count", 0)
