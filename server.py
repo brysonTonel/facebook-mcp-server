@@ -220,3 +220,27 @@ def update_post(post_id: str, new_message: str) -> dict[str, Any]:
     Output: dict of update result
     """
     return manager.update_post(post_id, new_message)
+@mcp.tool()
+def schedule_post(message: str, publish_time: int) -> dict[str, Any]:
+    """Schedule a new post for future publishing.
+    Input: message (str), publish_time (Unix timestamp)
+    Output: dict with scheduled post info
+    """
+    return manager.schedule_post(message, publish_time)
+
+@mcp.tool()
+def get_page_fan_count() -> int:
+    """Get the Page's total fan/like count.
+    Input: None
+    Output: integer fan count
+    """
+    return manager.get_page_fan_count()
+
+@mcp.tool()
+def get_post_share_count(post_id: str) -> int:
+    """Get the number of shares for a post.
+    Input: post_id (str)
+    Output: integer share count
+    """
+    return manager.get_post_share_count(post_id)
+

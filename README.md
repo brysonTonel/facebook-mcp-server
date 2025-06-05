@@ -45,6 +45,9 @@ This MCP provides a suite of AI-callable tools that connect directly to a Facebo
 | `post_image_to_facebook`         | Post an image with a caption to the Facebook page.                  |
 | `send_dm_to_user`                | Send a direct message to a user.                                    |
 | `update_post`                    | Updates an existing post's message.                                 |
+| `schedule_post`                  | Schedule a post for future publication.                     |
+| `get_page_fan_count`             | Retrieve the total number of Page fans.                     |
+| `get_post_share_count`           | Get the number of shares on a post.                         |
 
 ---
 
