@@ -6,6 +6,7 @@ class Manager:
     def __init__(self):
         self.api = FacebookAPI()
 
+
     def post_to_facebook(self, message: str) -> dict[str, Any]:
         return self.api.post_message(message)
 
